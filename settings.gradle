@@ -78,5 +78,8 @@ include 'kafka-event-queue'
 
 include 'test-harness'
 
+// es8
+include 'conductor-es8-persistence'
+
 rootProject.children.each {it.name="conductor-${it.name}"}
 

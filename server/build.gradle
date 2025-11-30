@@ -41,9 +41,11 @@ dependencies {
     implementation project(':conductor-sqlite-persistence')
 
     // Indexing backend selection (build-time) to avoid Lucene conflicts between ES and OS
-    def indexingBackend = project.findProperty('indexingBackend') ?: 'elasticsearch'
+    def indexingBackend = project.findProperty('indexingBackend') ?: 'elasticsearch7'
     if (indexingBackend == 'opensearch' || indexingBackend == 'os') {
         implementation project(':conductor-os-persistence')
+    } else if (indexingBackend == 'elasticsearch8' || indexingBackend == 'es8') {
+        implementation project(':conductor-es8-persistence')
     } else {
         implementation project(':conductor-es7-persistence')
     }
